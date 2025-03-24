@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%- recipe.title %></title> 
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <header>
+    <h1><%- recipe.title %></h1>
+    <nav>
+      <a href="/">Home</a>
+      <a href="/recipe1">Recipe 1</a>
+      <a href="/recipe2">Recipe 2</a>
+      <a href="/recipe3">Recipe 3</a>
+    </nav>
+  </header>
+
+  <h3>Ingredients:</h3>
+  <% if (recipe.ingredients && recipe.ingredients.length) { %>
+    <ul>
+      <% recipe.ingredients.forEach(ingredient => { %>
+        <li><%= ingredient %></li>
+      <% }); %>
+    </ul>
+  <% } else { %>
+    <p>No ingredients listed.</p>
+  <% } %>
+
+  <h3>Servings:</h3>
+  <p><%= recipe.servings || "N/A" %></p>  <!-- Prevents errors if undefined -->
+
+  <h3>Prep Time:</h3>
+  <p><%= recipe.prepTime || "N/A" %></p>
+
+  <h3>Cook Time:</h3>
+  <p><%= recipe.cookTime || "N/A" %></p>
+
+  <h3>Instructions:</h3>
+  <p style="white-space: pre-line"><%= recipe.instructions || "No instructions available." %></p>
+
+  <div class="source-link">
+    <p>Recipe adapted from: 
+      <a href="https://www.fromvalerieskitchen.com/grilled-hawaiian-bbq-chicken/" target="_blank">
+        From Valerie's Kitchen
+      </a>
+    </p>
+  </div>
+
+  <footer>
+    <p>Recipe website by Sophia Franco</p>
+  </footer>
+</body>
+</html>
+
